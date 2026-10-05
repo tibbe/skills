@@ -28,13 +28,17 @@ sub-agents, so each search stays out of the others' context and yours.
 
    Give each the framing and this brief: "Search the web for how this problem is
    solved. Report every principled design the sources take, each with its
-   trade-offs and the sources it comes from. Under 400 words."
+   trade-offs, how widely it is adopted and why its adopters chose it, and the
+   sources it comes from. Under 400 words."
 
 ### 2. Choose
 
 Compare the reported designs and choose the one that best meets these criteria,
 in priority order:
 
+- **Follow the consensus**: prefer the design most sources converge on. To
+  choose another, first state why its adopters chose it, then why that reasoning
+  doesn't apply here.
 - **Make illegal states unrepresentable**: precise types and data structures,
   and a smart constructor where the type system can't express an invariant. For
   a bug fix, the design under which the bug cannot occur.
