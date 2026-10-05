@@ -32,12 +32,15 @@ sub-agents, so each search stays out of the others' context and yours.
 
 ### 2. Choose
 
-Compare the reported designs and choose one. Prefer the design that makes
-illegal states unrepresentable: precise types and data structures, and a smart
-constructor where the type system can't express an invariant. For a bug fix,
-find the design under which the bug cannot occur. Choose the design that best
-solves the problem, even if it differs from how the code works today. Reshaping
-the current code to fit is the job of the Plan step.
+Compare the reported designs and choose the one that best meets these criteria,
+in priority order:
+
+- **Make illegal states unrepresentable**: precise types and data structures,
+  and a smart constructor where the type system can't express an invariant. For
+  a bug fix, the design under which the bug cannot occur.
+
+Choose the best design even if it differs from how the code works today.
+Reshaping the current code to fit is the job of the Plan step.
 
 ### 3. Plan
 
@@ -49,5 +52,5 @@ change itself only adds to the new structure.
 
 End with the design, for the implementation that follows:
 
-- the chosen design and why, with its sources;
+- the chosen design and how it meets each criterion, with its sources;
 - the restructuring the change needs first, and then the change.
