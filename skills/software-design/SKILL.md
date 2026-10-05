@@ -7,9 +7,8 @@ description:
 
 # Software design
 
-Before changing code, whether for a new feature or a bug fix, decide how the
-code should look, so that it reads as if it had been designed for what it now
-does from the start rather than changed to fit it afterwards.
+Decide how the code should look so it reads as if it had been designed for what
+it now does from the start, rather than changed to fit it afterwards.
 
 ## Process
 
@@ -29,21 +28,18 @@ sub-agents, so each search stays out of the others' context and yours.
    solved. Report every principled design the sources take, each with its
    trade-offs and the sources it comes from. Under 400 words."
 
-3. Compare the designs the sub-agents report.
-
 ### 2. Choose
 
-Choose the design that best solves this problem. Prefer the design that makes
-illegal states unrepresentable: precise types and data structures, and where
-the type system can't express an invariant, a type whose only constructor
-enforces it. Bugs are then ruled out rather than patched. For a bug fix, this
-means finding the design that makes the bug impossible, not just the line that
-causes it.
+Compare the reported designs and choose one. Prefer the design that makes
+illegal states unrepresentable: precise types and data structures, and a smart
+constructor where the type system can't express an invariant. For a bug fix,
+find the design under which the bug cannot occur, not just the line that
+triggers it.
 
 ### 3. Plan
 
-Make the change easy, then make the easy change. List where the current code
-departs from the chosen design: those parts are restructured first, so the
+Make the change easy, then make the easy change. List every place the current
+code departs from the chosen design: those parts are restructured first, so the
 change itself only adds to the new structure.
 
 ## Output
