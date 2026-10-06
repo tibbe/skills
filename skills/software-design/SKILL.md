@@ -7,9 +7,6 @@ description:
 
 # Software design
 
-Decide how the code should look so it reads as if it had been designed for what
-it now does from the start.
-
 ## Process
 
 ### 1. Prior art
@@ -19,8 +16,8 @@ sub-agents, so each search stays out of the others' context and yours.
 
 1. Frame the problem: the behavior the change must deliver, the quality
    attributes the spec states, and the language and platform it must run on. The
-   libraries and components the code builds on today are part of the design,
-   open to change like the rest.
+   current design, including the libraries and components it builds on, is open
+   to change.
 2. Spawn one sub-agent per kind of prior art the problem has:
    - **Library**: the library's or framework's own recommended approach, from
      its documentation.
@@ -37,9 +34,9 @@ sub-agents, so each search stays out of the others' context and yours.
 ### 2. Choose
 
 Compare the reported designs and, for each decision, follow the consensus: the
-design most sources converge on, and above all a solution the platform's SDKs
-provide for this problem. Any other design, whether fewer sources take it or
-none do, has to win against it.
+design most sources converge on, counting a solution the platform's SDKs
+document for this problem as strong evidence. Any other design, whether fewer
+sources take it or none do, has to win against it.
 
 Before choosing, write down the case against each design. The case against the
 consensus first says why its adopters chose it, then why that reasoning doesn't
@@ -49,19 +46,9 @@ apply here. Strike out any reason that:
 - leans on what the code already does;
 - is circular: it assumes the choice it argues for.
 
-Choose on the reasons that remain. Reshaping the current code to fit is the job
-of the Plan step.
-
-### 3. Plan
-
-Make the change easy, then make the easy change. List every place the current
-code departs from the chosen design: those parts are restructured first, so the
-change itself only adds to the new structure.
+Choose on the reasons that remain.
 
 ## Output
 
-End with the design, for the implementation that follows:
-
-- the chosen design, where it follows or departs from the consensus and why,
-  with its sources;
-- the restructuring the change needs first, and then the change.
+End with the chosen design, where it follows or departs from the consensus and
+why, with its sources.
