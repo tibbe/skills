@@ -40,7 +40,7 @@ sources take it or none do, has to win against it.
 
 Before choosing, write down the case against each design. The case against the
 consensus first says why its adopters chose it, then why that reasoning doesn't
-apply here. Strike out any reason that:
+apply here. Strike out any reason, for or against a design, that:
 
 - counts how much code the design rewrites;
 - leans on what the code already does;
@@ -50,5 +50,9 @@ Choose on the reasons that remain.
 
 ## Output
 
-End with the chosen design, where it follows or departs from the consensus and
-why, with its sources.
+End with:
+
+- the case against each design, with each struck reason shown and the rule
+  that struck it;
+- the chosen design, where it follows or departs from the consensus and why,
+  with its sources.
