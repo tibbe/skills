@@ -18,19 +18,19 @@ A small product:
 
 ```
 /
-├── GLOSSARY.md
 ├── docs/
 │   └── specs/
 │       ├── product.md
+│       ├── design_system.md
 │       └── architecture.md
 └── src/
 ```
 
-As it grows, its areas move out of `product.md` into a file each:
+As it grows, its areas move out of `product.md` into a file each, and each
+platform it runs on gets a folder for what holds only there:
 
 ```
 /
-├── GLOSSARY.md                  ← the vocabulary: each term defined once
 ├── docs/
 │   └── specs/
 │       ├── product.md           ← the product on one page, and the list of areas
@@ -38,34 +38,20 @@ As it grows, its areas move out of `product.md` into a file each:
 │       ├── billing.md
 │       ├── payments.md
 │       ├── shipping.md
-│       └── architecture.md      ← architecturally significant decisions
+│       ├── design_system.md     ← the UX that holds across areas
+│       ├── architecture.md      ← architecturally significant decisions
+│       ├── macos/
+│       │   ├── design_system.md ← the UX on this platform
+│       │   └── architecture.md  ← architecture on this platform
+│       └── web/
+│           └── design_system.md
 └── src/
 ```
 
-Create files lazily: only when you have something to write.
-
-- If no `docs/specs/` exists, create `product.md` and `architecture.md` together
-  when the first decision is made.
-- While the product is small, each area is a section of `product.md`. When
-  `product.md` grows past about two pages, move every area into its own file in
-  one edit, and replace the sections with the Areas table.
-- Once areas have their own files, a new area gets a file and a row in the Areas
-  table in the same edit.
-- If no `GLOSSARY.md` exists, create it when the first term is settled.
+Only `product.md` is required. Create the other files lazily: only when you
+have something to write in them.
 
 Use the format in the Format section below for every file under `docs/specs/`.
-`GLOSSARY.md` has its own format; if a domain-modeling skill is available, use
-it for glossary edits.
-
-## Terms
-
-- **Area**: one part of the product's behaviour, named the way its users would
-  name it, such as Ordering or Billing. It is a section of `product.md` in a
-  small product, and its own file in a larger one.
-- **Decision**: one statement of what the product does or requires, settled by
-  the person who owns the product. Decisions are the part of the spec that is
-  built.
-- **User story**: why an area exists, told from one user's point of view.
 
 ## While deciding
 
@@ -93,16 +79,25 @@ When a new decision conflicts with one already in the spec, quote it with its
 area: "billing.md says a sent invoice can't be changed, but this lets customers
 correct the address on one. Which is right?" Don't let both stand.
 
-### Use the glossary's words
-
-Use terms exactly as `GLOSSARY.md` defines them. When the user uses a word the
-glossary lists under _Avoid_, or a new term the spec needs, settle the term and
-update the glossary in the same edit.
-
 ### Keep other files' summaries true
 
-After changing an area's decisions, check that `product.md` still describes the
-area correctly.
+After changing an area's details, check that its overview and `product.md` still
+describe it correctly.
+
+### Decide once, on the widest level it holds
+
+A decision that holds across every area is a principle in `product.md`, such as
+"all persisted state is stored in GitHub". One principle settles many
+decisions, so the areas don't repeat it.
+
+A decision that holds on every platform goes in the shared files, even if only
+one platform has been built. A platform file holds only what is specific to
+that platform: how it realises a shared decision (the color for each role, the
+component used for navigation), and what the shared files leave open. The
+shared files never name a platform, and a platform file never contradicts
+them. When a platform has to differ, keep in the shared file only the part
+that holds on every platform, and write each platform's version in its own
+file.
 
 ### The spec leads
 
@@ -112,29 +107,29 @@ don't weaken a decision because the software doesn't do it yet.
 
 ## Format
 
-### Normative and informative
+### Overview, then details
 
-The spec has two kinds of content:
+`product.md` and each area are read two ways: by someone who wants the picture,
+and by someone who builds from it. So each has two parts:
 
-- **Normative**: the Solution principles in `product.md`, and the Decisions in
-  each area and in `architecture.md`. These are what gets built. Every fact
-  about the product is stated normatively exactly once.
-- **Informative**: everything else: the Vision, the Problem Statement, each
-  area's opening paragraph, user stories and diagrams. These help a reader
-  understand the normative parts. They summarise and explain, and add no
-  requirement of their own.
+1. **Overview**: the high-level picture in a few paragraphs, with the most
+   important use cases as examples. A reader who wants a summary stops here.
+2. **Details**: everything else the templates below show: user stories,
+   decisions and what is out of scope. A builder reads these too.
 
-A reader who stops at the informative parts gets a correct picture. A builder
-who reads the normative parts gets every requirement.
+The overview summarises the details and adds nothing they don't say. The
+principles in `product.md` are the exception: each is stated there once and
+holds in every area.
 
-### What stays out of the spec
+### What goes in the spec
 
-The templates below show what goes in each file. Terms are defined only in
-`GLOSSARY.md`, never in the spec files. These never go in the spec:
+The spec holds everything a user can observe: given the spec alone, all of the
+product's code could be written again without any change a user would notice.
+Beyond that, it holds only the architecturally significant decisions. These
+never go in the spec:
 
 - How the code does what the spec says: modules, functions, file paths, data
-  structures, unless one is an architecturally significant decision, which goes
-  in `architecture.md`.
+  structures, unless one is an architecturally significant decision.
 - What other systems do on their own, except what the product relies on from
   them.
 - The state of the work: what is built or not yet, plans, priorities, task
@@ -144,6 +139,10 @@ The templates below show what goes in each file. Terms are defined only in
 - Open questions, TODOs and placeholders.
 
 ### product.md
+
+The product on one page: what it is, the problem it solves, the principles
+that hold across every area, and what it deliberately doesn't do. While the
+product is small, its areas are sections of this file.
 
 ```md
 # <Product> product spec
@@ -163,8 +162,6 @@ The templates below show what goes in each file. Terms are defined only in
 <One sentence: the shape of the solution.>
 
 - **<A principle that holds across every area>.** <One or two sentences.>
-
-<A diagram of the main flow, if there is one.>
 
 ## <Area>
 
@@ -190,10 +187,18 @@ in one edit, raising its headings one level, and replace the area sections with:
 
 ### Areas
 
+An area is one part of the product's behaviour, named the way its users would
+name it, such as Ordering or Billing. It holds why the area exists, as user
+stories each told from one user's point of view, and its decisions: what the
+product does in the area, including UX that belongs to it alone. Once areas
+have their own files, a new area gets its file and its row in the Areas table
+in the same edit.
+
 ```md
 # <Area>
 
-<One or two sentences: what this area covers.>
+<Overview: what this area covers and its most important use cases, in a few
+paragraphs.>
 
 ## User Stories
 
@@ -219,13 +224,58 @@ in one edit, raising its headings one level, and replace the area sections with:
   doesn't.>
 ```
 
+### design_system.md
+
+The UX that holds across areas: the colors, type and layout every area uses.
+
+```md
+# Design system
+
+## <Foundation, such as Color, Type, Layout or Navigation>
+
+- <A decision that holds across areas, one per bullet.>
+```
+
+Name what a foundation sets by role, not by value: an "Error" color, not
+`#e01b24`. Each platform's design system gives the values.
+
 ### architecture.md
+
+The architecturally significant decisions: the ones costly to change later,
+such as the languages and frameworks.
 
 ```md
 # Architecture
 
-<One sentence: what kind of decisions this file holds.>
-
 - **<An architecturally significant decision, as a statement>.** <What it means,
   and why it was chosen over the obvious alternative.>
 ```
+
+### Platform folders
+
+A platform is one environment the product runs on with its own conventions,
+such as macOS, Linux or the web. Its folder holds only what holds on it alone,
+in the files below.
+
+#### <platform>/design_system.md
+
+How the platform realises the shared design system: the platform's design
+system it follows, such as Material Design 3 or Apple's Human Interface
+Guidelines, the value for each color role, and the components that realise
+navigation.
+
+```md
+# <Product> on <platform>: design system
+
+<One sentence: the platform's design system it follows.>
+
+## <Foundation>
+
+- <How this platform realises the shared foundation, such as the color for
+  each role or the component used for navigation.>
+```
+
+#### <platform>/architecture.md
+
+The architecturally significant decisions that hold only on this platform, in
+the `architecture.md` format, titled `# <Platform> architecture`.

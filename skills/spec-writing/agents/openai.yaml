@@ -1,0 +1,6 @@
+interface:
+  display_name: "Spec writing"
+  short_description: "Decide what the product does and write it into the spec"
+
+policy:
+  allow_implicit_invocation: true
