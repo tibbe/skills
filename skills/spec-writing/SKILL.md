@@ -79,10 +79,12 @@ When a new decision conflicts with one already in the spec, quote it with its
 area: "billing.md says a sent invoice can't be changed, but this lets customers
 correct the address on one. Which is right?" Don't let both stand.
 
-### Keep other files' summaries true
+### Keep overviews true
 
 After changing an area's details, check that its overview and `product.md` still
-describe it correctly.
+hold. An overview explains what the area is about, not what it decides, so a new
+decision rarely touches it. Change it only when the decision contradicts it, or
+changes what the area is about.
 
 ### Decide once, on the widest level it holds
 
@@ -109,16 +111,18 @@ don't weaken a decision because the software doesn't do it yet.
 
 ### Overview, then details
 
-`product.md` and each area are read two ways: by someone who wants the picture,
-and by someone who builds from it. So each has two parts:
+`product.md` and each area are read two ways: by someone who wants to
+understand what it is about, and by someone who builds from it. So each has two
+parts:
 
-1. **Overview**: the high-level picture in a few paragraphs, with the most
-   important use cases as examples. A reader who wants a summary stops here.
+1. **Overview**: what this is about at its core, explained to a person in a few
+   paragraphs, with the most important use cases as examples. A reader who
+   only wants to understand it stops here.
 2. **Details**: everything else the templates below show: user stories,
    decisions and what is out of scope. A builder reads these too.
 
-The overview summarises the details and adds nothing they don't say. The
-principles in `product.md` are the exception: each is stated there once and
+The overview explains; it doesn't list. It states no requirement the details
+don't, except for the principles in `product.md`: each is stated there once and
 holds in every area.
 
 ### What goes in the spec
@@ -197,8 +201,8 @@ in the same edit.
 ```md
 # <Area>
 
-<Overview: what this area covers and its most important use cases, in a few
-paragraphs.>
+<Overview: what this area is about at its core, explained to someone new to it,
+with its most important use cases as examples.>
 
 ## User Stories
 
