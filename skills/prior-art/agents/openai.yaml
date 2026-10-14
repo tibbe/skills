@@ -1,5 +1,5 @@
 interface:
-  display_name: "Software design"
+  display_name: "Prior art"
   short_description: "Design the code before changing it"
 
 policy:

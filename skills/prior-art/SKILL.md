@@ -1,11 +1,11 @@
 ---
-name: software-design
+name: prior-art
 description:
   Design the code before changing it. Use before implementing a feature or
   fixing a bug.
 ---
 
-# Software design
+# Prior art
 
 ## Process
 
@@ -52,7 +52,7 @@ Choose on the reasons that remain.
 
 End with:
 
-- the case against each design, with each struck reason shown and the rule
-  that struck it;
+- the case against each design, with each struck reason shown and the rule that
+  struck it;
 - the chosen design, where it follows or departs from the consensus and why,
   with its sources.
