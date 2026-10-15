@@ -66,22 +66,32 @@ The spec carries no open questions, TODOs or placeholders, because the builder
 can't ask. Put the question to the user. If it stays open, leave the behaviour
 out, or list it under Out of scope.
 
-### Start from what others have decided
+### Start from prior art
 
 Before you recommend how the product behaves, find out how others have answered
-the same question. Look at products of the same kind, such as how other editors
-group undo steps, and at the platform's guidelines, such as Material Design.
-How they answer it is a fact to find, not a decision to put to the user.
+the same question: products of the same kind as this one and others facing the
+same problem, and the platform's guidelines and standards, such as Apple's Human
+Interface Guidelines, Material Design or RFC 3339. How they answer it is a fact:
+look it up rather than ask the user or rely on memory, which is often wrong in
+the details.
 
-Find it the way you find a fact about the code: look it up. Dispatch a
-sub-agent to check how the products and guidelines answer it, or use the
-`prior-art` skill to survey several. Memory of how a product behaves is often
-wrong in the details. Keep the research out of your message to the user; the
-source is enough.
+Dispatch one sub-agent for the platform and one for products. Give each the
+question and this brief: "Search the web for how this question is answered.
+Report every principled design the sources take, each with its trade-offs, the
+evidence of its adoption, why its adopters chose it, and the sources it comes
+from. Evidence of adoption: the platform providing or documenting it, and
+products like ours using it. Under 400 words."
 
-Recommend what they agree on, and name the source in a few words. A design of
-your own has to win against it. What the product does today, or how much work a
-change takes, is no reason to depart from it.
+Then follow the consensus: the design most sources converge on, counting what
+the platform documents for this question as strong evidence. Any other design
+has to win against it. Write down the case against each design; the case against
+the consensus first says why its adopters chose it, then why that doesn't apply
+here. Strike out any reason, for or against a design, that counts the size of
+the change, leans on what the code does today, or assumes the choice it argues
+for, and choose on the reasons that remain.
+
+Put the designs to the user, each with its source in a few words, recommend the
+one you chose, and give the reason against each of the others.
 
 ### Ask for the hard cases
 
