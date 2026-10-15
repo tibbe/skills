@@ -66,6 +66,23 @@ The spec carries no open questions, TODOs or placeholders, because the builder
 can't ask. Put the question to the user. If it stays open, leave the behaviour
 out, or list it under Out of scope.
 
+### Start from what others have decided
+
+Before you recommend how the product behaves, find out how others have answered
+the same question. Look at products of the same kind, such as how other editors
+group undo steps, and at the platform's guidelines, such as Material Design.
+How they answer it is a fact to find, not a decision to put to the user.
+
+Find it the way you find a fact about the code: look it up. Dispatch a
+sub-agent to check how the products and guidelines answer it, or use the
+`prior-art` skill to survey several. Memory of how a product behaves is often
+wrong in the details. Keep the research out of your message to the user; the
+source is enough.
+
+Recommend what they agree on, and name the source in a few words. A design of
+your own has to win against it. What the product does today, or how much work a
+change takes, is no reason to depart from it.
+
 ### Ask for the hard cases
 
 A decision is ready when its edge cases are. Ask what happens when something is
