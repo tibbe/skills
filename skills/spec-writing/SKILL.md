@@ -73,6 +73,18 @@ missing, repeated, late, concurrent, refused or fails halfway, and write the
 answers into the decision. Propose a concrete case when the user's statement is
 abstract, and ask whether it's right.
 
+### State the rule, not its cases
+
+When a decision lists cases, or you're about to add a case to one, propose the
+rule the cases follow and ask whether it's right: "a customer can cancel an
+order until it ships", not "a customer can cancel an order that is placed, paid
+or packed". The rule can be a convention the product follows: "amounts are
+written the way the customer's locale writes them". Make it the most general
+statement from which a builder can still derive every case, the next one
+included. A rule is open–closed: it settles the next case without an edit,
+where a list grows with every one. Write cases only as exceptions to the rule
+or as examples of it.
+
 ### Challenge against existing decisions
 
 When a new decision conflicts with one already in the spec, quote it with its
@@ -127,10 +139,10 @@ holds in every area.
 
 ### What goes in the spec
 
-The spec holds everything a user can observe: given the spec alone, all of the
-product's code could be written again without any change a user would notice.
-Beyond that, it holds only the architecturally significant decisions. These
-never go in the spec:
+The spec decides everything a user can observe: given the spec alone, a builder
+could write all of the product's code again, deriving each case from its
+decisions, without any change a user would notice. Beyond that, it holds only
+the architecturally significant decisions. These never go in the spec:
 
 - How the code does what the spec says: modules, functions, file paths, data
   structures, unless one is an architecturally significant decision.
