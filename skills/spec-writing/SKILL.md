@@ -112,6 +112,29 @@ included. A rule is open–closed: it settles the next case without an edit,
 where a list grows with every one. Write cases only as exceptions to the rule
 or as examples of it.
 
+### Write only what no decision already implies
+
+A builder derives every case from the decisions, so a clause that follows from
+a decision already in the spec tells them nothing. Instead it gives them two
+things to keep true. After you write a decision, check each clause and ask
+which decision it follows from, in this area or another. Keep it only if the
+answer is none, or if it is an exception or an example. Signs of an implied
+clause:
+
+- A qualifier that a general word already covers: "including gift card
+  orders" after "every paid order".
+- A consequence of the rule before it: "a shipped order can't be cancelled"
+  after "a customer can cancel an order until it ships".
+- What another area already decides: "a cancelled order is refunded" in
+  Ordering when Payments decides refunds.
+- A tautology: "a paid invoice is one the customer has paid".
+- A detail no decision depends on, such as a title format nobody reads.
+- What the product doesn't do, when no decision says it does: "customers can't
+  edit a sent invoice" when nothing lets them edit one. The spec decides
+  everything a user can observe, so whatever it doesn't decide, the product
+  doesn't do. This often comes from a decision that was removed. If a reader
+  would expect the behaviour, list it under Out of scope.
+
 ### Challenge against existing decisions
 
 When a new decision conflicts with one already in the spec, quote it with its
