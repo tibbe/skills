@@ -13,6 +13,9 @@ needing clarification, the cause is usually in how the spec is written or how
 the feature is conceived, not in the cases themselves. Find those causes from
 the spec's history, and propose what would remove them.
 
+First call the Skill tool for "spec-writing". It says where the spec lives and
+how its areas are laid out, and its rules are the ones your proposals follow.
+
 ## Process
 
 ### 1. Gather the evidence
