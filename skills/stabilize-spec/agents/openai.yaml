@@ -1,0 +1,5 @@
+interface:
+  display_name: "Stabilize spec"
+  short_description: "Find why a spec keeps needing clarification and fix the cause"
+policy:
+  allow_implicit_invocation: false
