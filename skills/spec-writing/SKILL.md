@@ -153,7 +153,8 @@ don't weaken a decision because the software doesn't do it yet.
 understand what it is about, then the details for someone who builds from it.
 The overview explains; it doesn't list. It states no requirement the details
 don't, except for the principles in `product.md`: each is stated there once and
-holds in every area.
+holds in every area. An overview may hold a diagram of the main path, such as
+the pipeline end to end; like the rest of the overview, it decides nothing.
 
 ### What goes in the spec
 
