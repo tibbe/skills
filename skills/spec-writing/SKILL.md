@@ -149,8 +149,9 @@ don't weaken a decision because the software doesn't do it yet.
 
 ### Overview, then details
 
-`product.md` and each area open with an overview for someone who wants to
-understand what it is about, then the details for someone who builds from it.
+`product.md`, each area and `architecture.md` open with an overview for someone
+who wants to understand what it is about, then the details for someone who
+builds from it.
 The overview explains; it doesn't list. It states no requirement the details
 don't, except for the principles in `product.md`: each is stated there once and
 holds in every area. An overview may hold a diagram of the main path, such as
@@ -323,9 +324,21 @@ such as the languages and frameworks.
 ```md
 # Architecture
 
-- **<An architecturally significant decision, as a statement>.** <What it means,
-  and why it was chosen over the obvious alternative.>
+<Overview: what the architecture is about at its core, explained to someone new
+to it: "an order is a log of events; each service keeps its own view of it".>
+
+## <Topic, such as State or Deployment>
+
+<The rule for the whole topic, in one sentence: "A service reads only its own
+view of an order, and updates it from the log.">
+
+<The decisions under the rule, each as a statement with what it means, in the
+forms an area's topic uses.>
 ```
+
+A decision names the obvious alternative, why it lost, and the cost accepted:
+"views live in SQLite, not Postgres: nothing to operate, at the cost of one
+writer per service".
 
 ### Platform folders
 
