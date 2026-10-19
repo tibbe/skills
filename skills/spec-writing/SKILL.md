@@ -2,8 +2,7 @@
 name: spec-writing
 description:
   Write or edit a product spec. Use when deciding or changing what the product
-  does or an architecturally significant decision, or when writing or editing a
-  specification.
+  does or an architecturally significant decision.
 ---
 
 # Spec Writing
@@ -13,21 +12,6 @@ writing it in the spec, and the software is built from the spec and changed to
 match it.
 
 ## File structure
-
-A small product:
-
-```
-/
-├── docs/
-│   └── specs/
-│       ├── product.md
-│       ├── design_system.md
-│       └── architecture.md
-└── src/
-```
-
-As it grows, its areas move out of `product.md` into a file each, and each
-platform it runs on gets a folder for what holds only there:
 
 ```
 /
@@ -49,28 +33,20 @@ platform it runs on gets a folder for what holds only there:
 └── src/
 ```
 
-Only `product.md` is required. Create the other files lazily: only when you
-have something to write in them.
+Create each file lazily: only when you have something to write in it.
 
 A product may keep a glossary, `GLOSSARY.md` at the repository root: its
 ubiquitous language, in the sense of domain-driven design, with each term the
 product gives its own meaning, such as "backorder", defined once. The spec uses
 those terms unchanged, and a term the spec coins goes in the glossary.
 
-Use the format in the Format section below for every file under `docs/specs/`.
-
 ## While deciding
 
-### Edit only what was decided
+### Write only what was decided
 
-Change the spec when the user settles a behaviour, and only then. Don't write up
-proposals, options or guesses: anything in the spec will be built.
-
-### Leave out what isn't decided
-
-The spec carries no open questions, TODOs or placeholders, because the builder
-can't ask. Put the question to the user. If it stays open, leave the behaviour
-out, or list it under Out of scope.
+Change the spec when the user settles a behaviour, and only then: anything in
+it will be built, and the builder can't ask. Put an open question to the user;
+if it stays open, leave the behaviour out, or list it under Out of scope.
 
 ### Start from prior art
 
@@ -113,10 +89,9 @@ rule the cases follow and ask whether it's right: "a customer can cancel an
 order until it ships", not "a customer can cancel an order that is placed, paid
 or packed". The rule can be a convention the product follows: "amounts are
 written the way the customer's locale writes them". Make it the most general
-statement from which a builder can still derive every case, the next one
-included. A rule is open–closed: it settles the next case without an edit,
-where a list grows with every one. Write cases only as exceptions to the rule
-or as examples of it.
+statement from which a builder can still derive every case. A rule is
+open–closed: it settles the next case without an edit, where a list grows with
+every one. Write cases only as exceptions to the rule or as examples of it.
 
 ### Write only what no decision already implies
 
@@ -136,10 +111,8 @@ clause:
 - A tautology: "a paid invoice is one the customer has paid".
 - A detail no decision depends on, such as a title format nobody reads.
 - What the product doesn't do, when no decision says it does: "customers can't
-  edit a sent invoice" when nothing lets them edit one. The spec decides
-  everything a user can observe, so whatever it doesn't decide, the product
-  doesn't do. This often comes from a decision that was removed. If a reader
-  would expect the behaviour, list it under Out of scope.
+  edit a sent invoice" when nothing lets them edit one. If a reader would
+  expect the behaviour, list it under Out of scope.
 
 ### Challenge against existing decisions
 
@@ -150,24 +123,21 @@ correct the address on one. Which is right?" Don't let both stand.
 ### Keep overviews true
 
 After changing an area's details, check that its overview and `product.md` still
-hold. An overview explains what the area is about, not what it decides, so a new
-decision rarely touches it. Change it only when the decision contradicts it, or
-changes what the area is about.
+hold. Change them only when the decision contradicts them, or changes what the
+area is about.
 
 ### Decide once, on the widest level it holds
 
 A decision that holds across every area is a principle in `product.md`, such as
-"all persisted state is stored in GitHub". One principle settles many
+"every amount is shown in the customer's currency". One principle settles many
 decisions, so the areas don't repeat it.
 
 A decision that holds on every platform goes in the shared files, even if only
 one platform has been built. A platform file holds only what is specific to
-that platform: how it realises a shared decision (the color for each role, the
-component used for navigation), and what the shared files leave open. The
-shared files never name a platform, and a platform file never contradicts
-them. When a platform has to differ, keep in the shared file only the part
-that holds on every platform, and write each platform's version in its own
-file.
+that platform: how it realises a shared decision, and what the shared files
+leave open. The shared files never name a platform. When a platform has to
+differ, keep in the shared file only the part that holds on every platform, and
+write each platform's version in its own file.
 
 ### The spec leads
 
@@ -179,16 +149,8 @@ don't weaken a decision because the software doesn't do it yet.
 
 ### Overview, then details
 
-`product.md` and each area are read two ways: by someone who wants to
-understand what it is about, and by someone who builds from it. So each has two
-parts:
-
-1. **Overview**: what this is about at its core, explained to a person in a few
-   paragraphs, with the most important use cases as examples. A reader who
-   only wants to understand it stops here.
-2. **Details**: everything else the templates below show: user stories,
-   decisions and what is out of scope. A builder reads these too.
-
+`product.md` and each area open with an overview for someone who wants to
+understand what it is about, then the details for someone who builds from it.
 The overview explains; it doesn't list. It states no requirement the details
 don't, except for the principles in `product.md`: each is stated there once and
 holds in every area.
@@ -201,7 +163,7 @@ decisions, without any change a user would notice. Beyond that, it holds only
 the architecturally significant decisions. These never go in the spec:
 
 - How the code does what the spec says: modules, functions, file paths, data
-  structures, unless one is an architecturally significant decision.
+  structures.
 - What other systems do on their own, except what the product relies on from
   them.
 - The state of the work: what is built or not yet, plans, priorities, task
@@ -211,10 +173,6 @@ the architecturally significant decisions. These never go in the spec:
 - Open questions, TODOs and placeholders.
 
 ### product.md
-
-The product on one page: what it is, the problem it solves, the principles
-that hold across every area, and what it deliberately doesn't do. While the
-product is small, its areas are sections of this file.
 
 ```md
 # <Product> product spec
@@ -246,8 +204,9 @@ Order areas the way a reader meets them.>
   doesn't.>
 ```
 
-When `product.md` grows past about two pages, move every area into its own file
-in one edit, raising its headings one level, and replace the area sections with:
+`product.md` holds its areas as sections until it grows past about two pages.
+Then move every area into its own file in one edit, raising its headings one
+level, and replace the area sections with:
 
 ```md
 ## Areas
@@ -260,11 +219,9 @@ in one edit, raising its headings one level, and replace the area sections with:
 ### Areas
 
 An area is one part of the product's behaviour, named the way its users would
-name it, such as Ordering or Billing. It holds why the area exists, as user
-stories each told from one user's point of view, and what the product does in
-the area, including UX that belongs to it alone. Once areas have their own
-files, a new area gets its file and its row in the Areas table in the same
-edit.
+name it, such as Ordering or Billing, and holds the UX that belongs to it
+alone. Once areas have their own files, a new area gets its file and its row
+in the Areas table in the same edit.
 
 ```md
 # <Area>
@@ -344,7 +301,7 @@ so on, in whichever of these forms fits. A topic can use more than one form.
 
 ### design_system.md
 
-The UX that holds across areas: the colors, type and layout every area uses.
+The UX that holds across areas.
 
 ```md
 # Design system
@@ -355,7 +312,7 @@ The UX that holds across areas: the colors, type and layout every area uses.
 ```
 
 Name what a foundation sets by role, not by value: an "Error" color, not
-`#e01b24`. Each platform's design system gives the values.
+`#e01b24`.
 
 ### architecture.md
 
@@ -372,8 +329,7 @@ such as the languages and frameworks.
 ### Platform folders
 
 A platform is one environment the product runs on with its own conventions,
-such as macOS, Linux or the web. Its folder holds only what holds on it alone,
-in the files below.
+such as macOS, Linux or the web.
 
 #### <platform>/design_system.md
 
@@ -389,8 +345,7 @@ navigation.
 
 ## <Foundation>
 
-- <How this platform realises the shared foundation, such as the color for
-  each role or the component used for navigation.>
+- <How this platform realises the shared foundation.>
 ```
 
 #### <platform>/architecture.md
