@@ -31,6 +31,7 @@ platform it runs on gets a folder for what holds only there:
 
 ```
 /
+├── GLOSSARY.md                  ← the product's terms, if it keeps a glossary
 ├── docs/
 │   └── specs/
 │       ├── product.md           ← the product on one page, and the list of areas
@@ -50,6 +51,11 @@ platform it runs on gets a folder for what holds only there:
 
 Only `product.md` is required. Create the other files lazily: only when you
 have something to write in them.
+
+A product may keep a glossary, `GLOSSARY.md` at the repository root: its
+ubiquitous language, in the sense of domain-driven design, with each term the
+product gives its own meaning, such as "backorder", defined once. The spec uses
+those terms unchanged, and a term the spec coins goes in the glossary.
 
 Use the format in the Format section below for every file under `docs/specs/`.
 
@@ -255,10 +261,10 @@ in one edit, raising its headings one level, and replace the area sections with:
 
 An area is one part of the product's behaviour, named the way its users would
 name it, such as Ordering or Billing. It holds why the area exists, as user
-stories each told from one user's point of view, and its decisions: what the
-product does in the area, including UX that belongs to it alone. Once areas
-have their own files, a new area gets its file and its row in the Areas table
-in the same edit.
+stories each told from one user's point of view, and what the product does in
+the area, including UX that belongs to it alone. Once areas have their own
+files, a new area gets its file and its row in the Areas table in the same
+edit.
 
 ```md
 # <Area>
@@ -274,21 +280,67 @@ with its most important use cases as examples.>
 1. As a customer, I want to cancel an order until it ships, so that I don't pay for things I no longer need
 </user-story-example>
 
-## Decisions
+## <Topic>
 
-- <One decision per bullet.>
+<The rule for the whole topic, in one sentence: "A customer can cancel an
+order until it ships.">
 
-### <Subtopic, once there are more than about ten decisions>
-
-- <One decision per bullet.>
-
-<A state or flow diagram, if the decisions describe one.>
+<The rest of the topic, in the forms below.>
 
 ## Out of scope
 
 - <Something a reader would expect this area to do, but it deliberately
   doesn't.>
 ```
+
+Split what the product does in the area into topics, each a section named the
+way a reader would look for it, such as Cancelling or Refunds. Order topics the
+way a reader meets them. Most of a topic is the detail under its rule: what
+cancelling does to the payment and the shipment, what the customer sees, and
+so on, in whichever of these forms fits. A topic can use more than one form.
+
+- Write rules as bullets, each holding one rule and opening with a bold label
+  that names what it settles:
+
+  ```md
+  - **Cancelling.** A customer can cancel an order until it ships.
+  - **Refunds.** A cancelled order is refunded to the card that paid for it.
+  ```
+
+- Write a sequence as numbered steps along the usual path, then what happens
+  when a step goes another way, keyed to that step:
+
+  ```md
+  1. The customer pays.
+  2. The warehouse packs the order.
+  3. The order ships.
+
+  - **1a. The card is declined.** The order waits a day for payment, then is
+    cancelled.
+  - **2a. An item is out of stock.** The customer chooses to wait for it or to
+    have the rest shipped now.
+  ```
+
+- Write a set of things that share attributes, such as roles, labels, settings
+  or outcomes, as a table with a row per thing:
+
+  ```md
+  | Role   | Can see       | Can change          |
+  | ------ | ------------- | ------------------- |
+  | Viewer | every order   | nothing             |
+  | Clerk  | every order   | orders not yet paid |
+  ```
+
+- Write a lifecycle as a table with a row per transition, so the builder can
+  check every state against every event:
+
+  ```md
+  | State  | Event                | Next      | Effect                   |
+  | ------ | -------------------- | --------- | ------------------------ |
+  | placed | customer pays        | paid      | the warehouse is told    |
+  | paid   | customer cancels     | cancelled | the payment is refunded  |
+  | paid   | warehouse ships      | shipped   | the customer is emailed  |
+  ```
 
 ### design_system.md
 
