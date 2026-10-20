@@ -332,13 +332,9 @@ to it: "an order is a log of events; each service keeps its own view of it".>
 <The rule for the whole topic, in one sentence: "A service reads only its own
 view of an order, and updates it from the log.">
 
-<The decisions under the rule, each as a statement with what it means, in the
-forms an area's topic uses.>
+<The decisions under the rule, in the forms listed under Areas: labelled
+rules, a sequence with its exceptions, or a table.>
 ```
-
-A decision names the obvious alternative, why it lost, and the cost accepted:
-"views live in SQLite, not Postgres: nothing to operate, at the cost of one
-writer per service".
 
 ### Platform folders
 
