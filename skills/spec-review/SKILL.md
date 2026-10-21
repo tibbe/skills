@@ -1,11 +1,11 @@
 ---
 name: spec-review
 description:
-  Review the changes to a product spec since a fixed point (commit, branch,
+  "Review the changes to a product spec since a fixed point (commit, branch,
   tag, or merge-base): does the changed text hold with the rest of the spec
   and follow the rules of spec-writing? Runs the review in a sub-agent. Use
-  when the user wants to review changes to the spec, or asks to "review the
-  spec since X".
+  when the user wants to review changes to the spec, or asks to \"review the
+  spec since X\"."
 ---
 
 Review of the spec diff between the working tree and a fixed point the user
