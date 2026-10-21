@@ -1,0 +1,5 @@
+interface:
+  display_name: "Spec review"
+  short_description: "Review spec changes for contradiction, repetition and format"
+policy:
+  allow_implicit_invocation: true
