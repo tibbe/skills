@@ -6,6 +6,12 @@ description:
 disable-model-invocation: true
 ---
 
-Call the Skill tool three times, for "grilling", "domain-modeling", and
-"spec-writing". Record architecturally significant decisions as "spec-writing"
-says, not as ADRs.
+## Steps
+
+1. Call the Skill tool three times, for "grilling", "domain-modeling", and
+   "spec-writing", and grill the user until they confirm a shared
+   understanding. Record architecturally significant decisions as
+   "spec-writing" says, not as ADRs.
+2. Call the Skill tool for "spec-review" on the uncommitted changes. Put each
+   finding to the user as a final round, and change the spec only for the ones
+   they settle.

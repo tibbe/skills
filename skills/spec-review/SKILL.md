@@ -2,15 +2,15 @@
 name: spec-review
 description:
   "Review the changes to a product spec since a fixed point (commit, branch,
-  tag, or merge-base): does the changed text hold with the rest of the spec
-  and follow the rules of spec-writing? Runs the review in a sub-agent. Use
-  when the user wants to review changes to the spec, or asks to \"review the
-  spec since X\"."
+  tag, or merge-base) or the uncommitted ones: does the changed text hold with
+  the rest of the spec and follow the rules of spec-writing? Runs the review in
+  a sub-agent. Use when the user wants to review changes to the spec, or asks
+  to \"review the spec since X\"."
 ---
 
-Review of the spec diff between the working tree and a fixed point the user
-supplies: does the changed text hold with the rest of the spec and follow the
-rules of spec-writing?
+Review of the spec diff between the working tree and a fixed point, `HEAD`
+unless the user supplies one: does the changed text hold with the rest of the
+spec and follow the rules of spec-writing?
 
 The review runs as a **sub-agent** so this session's context doesn't colour it.
 
@@ -19,7 +19,8 @@ The review runs as a **sub-agent** so this session's context doesn't colour it.
 ### 1. Pin the fixed point
 
 Whatever the user said is the fixed point (a commit SHA, branch name, tag,
-`main`, `HEAD~5`, etc.). If they didn't specify one, ask for it.
+`main`, `HEAD~5`, etc.). If they didn't specify one, or asked for the
+uncommitted changes, it is `HEAD`.
 
 Capture the diff command once:
 `git diff <fixed-point> -- docs/specs GLOSSARY.md` (two-dot against the
