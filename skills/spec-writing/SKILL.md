@@ -139,8 +139,8 @@ could write all of the product's code again, deriving each case from its
 decisions, without any change a user would notice. Beyond that, it holds only
 the architecturally significant decisions. These never go in the spec:
 
-- How the code does what the spec says: modules, functions, file paths, data
-  structures.
+- How the code does what the spec says: modules, functions, source file paths,
+  data structures.
 - What other systems do on their own, except what the product relies on from
   them.
 - The state of the work: what is built or not yet, plans, priorities, task
