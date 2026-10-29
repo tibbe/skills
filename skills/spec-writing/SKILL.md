@@ -59,20 +59,20 @@ the details.
 
 Dispatch one sub-agent for the platform and one for products. Give each the
 question and this brief: "Search the web for how this question is answered.
-Report every principled design the sources take, each with its trade-offs, the
+Report every principled option the sources take, each with its trade-offs, the
 evidence of its adoption, why its adopters chose it, and the sources it comes
 from. Evidence of adoption: the platform providing or documenting it, and
 products like ours using it. Under 400 words."
 
-Then follow the consensus: the design most sources converge on, counting what
-the platform documents for this question as strong evidence. Any other design
-has to win against it. Write down the case against each design; the case against
+Then follow the consensus: the option most sources converge on, counting what
+the platform documents for this question as strong evidence. Any other option
+has to win against it. Write down the case against each option; the case against
 the consensus first says why its adopters chose it, then why that doesn't apply
-here. Strike out any reason, for or against a design, that counts the size of
+here. Strike out any reason, for or against an option, that counts the size of
 the change, leans on what the code does today, or assumes the choice it argues
 for, and choose on the reasons that remain.
 
-Put the designs to the user, each with its source in a few words, recommend the
+Put the options to the user, each with its source in a few words, recommend the
 one you chose, and give the reason against each of the others.
 
 ### Ask for the hard cases
