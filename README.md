@@ -9,7 +9,7 @@ npx skills add tibbe/skills
 ## Skills
 
 - [**prior-art**](skills/prior-art/SKILL.md): Find how the problem has been
-  solved before, and choose a design from it. Use before implementing a feature
+  solved before, and choose an option from it. Use before implementing a feature
   or fixing a bug, and before deciding what a product does.
 - [**spec-review**](skills/spec-review/SKILL.md): Review the changes to a
   product spec since a fixed point, or the uncommitted ones: does the changed
