@@ -51,8 +51,9 @@ dangling test against each clause the diff removed or moved:
 - **Contradicts** (hard): the changed clause and a clause elsewhere cannot both
   hold. → Quote both; no reading satisfies the two.
 - **Restates** (hard): two clauses decide the same thing. → Remove either; the
-  other still decides it. A decision belongs once, at the widest level it
-  holds: a principle in `product.md`, else a shared area, else a platform file.
+  other still decides it. Name the widest level the decision holds at. A
+  decision belongs once, at the widest level it holds: a principle in
+  `product.md`, else a shared area, else a platform file.
   A reference that names a decision and links to where it is made, as "as
   under [Repository](repository.md)", is not a match.
 - **Dangles** (hard): a clause elsewhere refers, by name or by link, to a
@@ -62,6 +63,12 @@ dangling test against each clause the diff removed or moved:
   gives the outcome. → State the case from the clause's own conditions, such
   as a set it ranges over being empty, and quote the clause; no clause in the
   spec decides the case.
+- **Leans on the glossary** (hard): the changed text decides a case by a
+  condition that only a `GLOSSARY.md` entry states, such as which facts make
+  an order a backorder. An entry gives a term's meaning, and the conditions
+  that decide which cases the term covers belong in the spec. → Quote the
+  entry's condition and the case it decides; no spec clause states the
+  condition.
 
 The Writing axis matches each test against each changed clause:
 
@@ -94,12 +101,9 @@ reports they return.
 - The spec's paths: every file under `docs/specs`, and `GLOSSARY.md` if it
   exists, **plus the Consistency tests from step 2** pasted in full (the
   sub-agent has no other access to them).
-- The brief: "Report, per file/clause where relevant, (a) every clause
-  elsewhere that the diff contradicts; (b) every decision it restates, naming
-  the widest level the decision holds at; (c) every clause left dangling by
-  text it removed or moved; and (d) every case the changed text admits that
-  no clause decides. Quote the changed or removed text and the clause
-  elsewhere, with its file, for each finding. Under 400 words."
+- The brief: "Report every finding of the Consistency tests, per file and
+  clause where relevant: name the test and quote what its → part names, with
+  each quote's file. Under 400 words."
 
 **Writing sub-agent prompt** should include:
 
@@ -111,7 +115,7 @@ reports they return.
   Format: cite the rule and quote the clause; and (b) any possibly implied
   clause you spot: name the sign, quote the clause and the decision it
   follows from. Distinguish hard violations from judgement calls: Format
-  breaches can be hard, but implied is always a judgement call. Under 400
+  breaches are hard, but implied is always a judgement call. Under 400
   words."
 
 ### 4. Aggregate
