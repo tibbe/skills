@@ -293,8 +293,8 @@ Name what a foundation sets by role, not by value: an "Error" color, not
 
 ### architecture.md
 
-The architecturally significant decisions: the ones costly to change later,
-such as the languages and frameworks.
+How the product is built: the decisions costly to change later that no user
+can observe, such as the languages and frameworks.
 
 ```md
 # Architecture
