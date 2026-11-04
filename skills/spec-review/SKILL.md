@@ -118,7 +118,19 @@ reports they return.
   breaches are hard, but implied is always a judgement call. Under 400
   words."
 
-### 4. Aggregate
+### 4. Remove the possibly implied clauses
+
+Skip this step when the Writing report names no possibly implied clause.
+Otherwise do the removal the Implied test asks for: in a temporary copy of
+the spec as written, cut every clause the report names, with the least
+rewording that leaves a sentence, and have a second Consistency sub-agent
+review the copy with the brief the first got, but with the Undecided test
+alone and a diff that is the removal alone, against the spec as written.
+
+Drop from the Writing report every possibly implied finding whose clause the
+second reviewer found a case for; the rest stand.
+
+### 5. Aggregate
 
 Present the two reports under `## Consistency` and `## Writing` headings,
 verbatim or lightly cleaned. Do **not** merge or rerank findings, because the
