@@ -50,12 +50,12 @@ if it stays open, leave the behaviour out, or list it under Out of scope.
 
 ### Start from prior art
 
-Before you recommend how the product behaves, find out how others have answered
-the same question: products of the same kind as this one and others facing the
-same problem, and the platform's guidelines and standards, such as Apple's Human
-Interface Guidelines, Material Design or RFC 3339. How they answer it is a fact:
-look it up rather than ask the user or rely on memory, which is often wrong in
-the details.
+Before you recommend how the product behaves or how it is built, find out how
+others have answered the same question: products of the same kind as this one
+and others facing the same problem, and the platform's guidelines and standards,
+such as Apple's Human Interface Guidelines, Material Design or RFC 3339. How
+they answer it is a fact: look it up rather than ask the user or rely on memory,
+which is often wrong in the details.
 
 Dispatch one sub-agent for the platform and one for products. Give each the
 question and this brief: "Search the web for how this question is answered.
