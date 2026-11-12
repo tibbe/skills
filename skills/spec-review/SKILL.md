@@ -87,8 +87,10 @@ The Writing axis matches each test against each changed clause:
   - a tautology: "a paid invoice is one the customer has paid";
   - a detail no decision depends on;
   - what the product doesn't do, when no decision says it does.
-- **Form** (hard): the changed text departs from spec-writing's Format. →
-  Cite the Format rule it departs from.
+- **Structure** (hard): the changed text departs from spec-writing's
+  Document structure. → Cite the Document structure rule it departs from.
+- **Plain English** (hard): a changed sentence breaks a rule of
+  spec-writing's Plain English. → Quote the sentence and name the rule.
 
 ### 3. Spawn both sub-agents in parallel
 
@@ -110,13 +112,14 @@ reports they return.
 - The diff command and commit list.
 - The spec's paths, as above, **plus the Writing tests from step 2** pasted
   in full.
-- The brief: "Call the Skill tool for 'spec-writing' for its Format. Report,
-  per file/clause where relevant, (a) every place the diff departs from
-  Format: cite the rule and quote the clause; and (b) any possibly implied
-  clause you spot: name the sign, quote the clause and the decision it
-  follows from. Distinguish hard violations from judgement calls: Format
-  breaches are hard, but implied is always a judgement call. Under 400
-  words."
+- The brief: "Call the Skill tool for 'spec-writing' for its Plain English
+  and Document structure. Report, per file/clause where relevant, (a) every
+  place the diff departs from Plain English or Document structure: cite the
+  rule and quote the clause; and (b) any possibly implied clause you spot:
+  name the sign, quote the clause and the decision it follows from.
+  Distinguish hard violations from judgement calls: Plain English and
+  Document structure breaches are hard, but implied is always a judgement
+  call. Under 400 words."
 
 ### 4. Remove the possibly implied clauses
 
