@@ -8,4 +8,5 @@ disable-model-invocation: true
 
 Call the Skill tool three times, for "grilling", "domain-modeling", and
 "spec-writing". Record architecturally significant decisions as "spec-writing"
-says, not as ADRs.
+says, not as ADRs. In every round, research the prior art of every question you
+ask, as "spec-writing" says.
