@@ -89,7 +89,7 @@ rule the cases follow and ask whether it's right: "a customer can cancel an
 order until it ships", not "a customer can cancel an order that is placed, paid
 or packed". The rule can be a convention the product follows: "amounts are
 written the way the customer's locale writes them". Make it the most general
-statement from which a builder can still derive every case. A rule is
+rule from which a builder can still derive every case. A rule is
 open–closed: it settles the next case without an edit, where a list grows with
 every one. Write cases only as exceptions to the rule or as examples of it.
 
@@ -120,7 +120,11 @@ don't weaken a decision because the software doesn't do it yet.
 
 Once done, call the Skill tool with "spec-review" to review the text.
 
-## Format
+## Plain English
+
+Write by the writing rules of ASD-STE100 Simplified Technical English.
+
+## Document structure
 
 ### Overview, then details
 
@@ -216,8 +220,8 @@ with its most important use cases as examples.>
 
 ## <Topic>
 
-<The rule for the whole topic, in one sentence: "A customer can cancel an
-order until it ships.">
+<The rule for the whole topic: "A customer can cancel an order until it
+ships.">
 
 <The rest of the topic, in the forms below.>
 
@@ -304,8 +308,8 @@ to it: "an order is a log of events; each service keeps its own view of it".>
 
 ## <Topic, such as State or Deployment>
 
-<The rule for the whole topic, in one sentence: "A service reads only its own
-view of an order, and updates it from the log.">
+<The rule for the whole topic: "A service reads only its own view of an
+order, and updates it from the log.">
 
 <The decisions under the rule, in the forms listed under Areas: labelled
 rules, a sequence with its exceptions, or a table.>
