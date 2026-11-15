@@ -34,13 +34,30 @@ sub-agents, so each search stays out of the others' context and yours.
    downloads or GitHub stars; and, for a library to adopt, its GitHub stars,
    package downloads and recent releases. Under 400 words."
 
-### 2. Choose
+### 2. Criteria
 
-Compare the reported options and, for each decision, follow the consensus: the
-most widely adopted option, by the evidence of adoption the reports give,
-counting a solution the platform documents for this problem as strong evidence.
-Any other option, whether less widely adopted or adopted by none, has to win
-against it.
+Once every research sub-agent has returned its report, list every option the
+reports give. Then, for each decision, write its criteria: the quality
+attributes the framing states, and performance, wherever the reports' trade-offs
+show the options can differ on them. Word each so that more of it is better, one
+concern to each. Mark as a must-have any the spec requires outright, and rank
+the rest High, Medium or Low by how much the change's success depends on them.
+
+### 3. Choose
+
+For each decision:
+
+1. Rule out any option that fails a must-have.
+2. Of the rest, take the consensus as the reference: the most widely adopted,
+   by the evidence of adoption the reports give, counting a solution the
+   platform documents for this problem as strong evidence.
+3. Rate each other option against the reference on each criterion as better,
+   same, worse or unknown, with the reason and the report it comes from.
+4. Where a rating is unknown, say whether the choice would change if it went
+   either way.
+5. Follow the reference unless another option's better ratings outweigh its
+   worse ones, weighed by each criterion's rank and by how far apart the
+   options are on it, not by their count.
 
 Before choosing, write down the case against each option. The case against the
 consensus first says why its adopters chose it, then why that reasoning doesn't
@@ -63,6 +80,10 @@ End with, restating what you wrote down, one block per decision:
 
 {two or three sentences}
 
+### Decision Drivers
+
+* {a criterion} ({must-have | High | Medium | Low})
+
 ### Considered Options
 
 * {title of option 1}
@@ -81,15 +102,20 @@ because {why, in one sentence}.}
 {what it is, in a sentence or two}. Taken by {the sources that take it}.
 
 * Good, because {why its adopters chose it}
+* Bad, because it fails the must-have {a criterion}: {the reason}, from
+  {the report it comes from}
+* {Good | Neutral | Bad}, because it is
+  {better than | the same as | worse than} "{the reference}" on {a criterion}:
+  {the reason}, from {the report it comes from}
+* Unknown on {a criterion}, because {what the reports don't show}
 * Bad, because {an argument}
 * ~~{a reason, for or against}~~ (struck: {the rule that struck it})
 
 #### {title of option 2}
 
-{what it is, in a sentence or two}. Taken by {the sources that take it}.
-
-* Good, because {why its adopters chose it}
-* Bad, because {an argument}
+…
 ```
 
-One Good line per option: why its adopters chose it.
+One Good line per option: why its adopters chose it. A Bad line for each
+must-have an option fails. Every option but the reference has one line per
+criterion, comparing it with the reference: Good, Neutral, Bad or Unknown.
