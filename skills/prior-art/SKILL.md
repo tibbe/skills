@@ -16,13 +16,14 @@ Assume the problem has been solved before, and research how in parallel
 sub-agents, so each search stays out of the others' context and yours.
 
 1. Frame the problem from its requirements, as you were given them, and
-   nothing else: the behavior the change must deliver, its quality attributes,
-   and the platform it must run on and, for code, its language.
+   nothing else: the kind of product it is for, the behavior the change must
+   deliver, its quality attributes, and the platform it must run on and, for
+   code, its language.
 2. Spawn one sub-agent per kind of prior art the problem has, together, in
    the foreground:
    - **Platform**: the recommended approach of the platform the framing names,
      from its documentation or design guidelines.
-   - **Products**: how other products of the same kind as ours, and others
+   - **Products**: how other products of the kind the framing names, and others
      facing the same problem, handle this behavior.
 
    Give each the framing and this brief: "Search the web for how this problem is
