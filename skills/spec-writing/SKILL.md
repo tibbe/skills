@@ -67,7 +67,9 @@ with its trade-offs, the evidence of its adoption, why its adopters chose it,
 and the sources it comes from. Evidence of adoption: the platform providing or
 documenting it; products like ours using it, with each product's users,
 downloads or GitHub stars; and, for a library to adopt, its GitHub stars,
-package downloads and recent releases. Under 400 words."
+package downloads and recent releases. Report them condensed and complete: one
+entry per option, leaving out no option, evidence or source, and nothing else.
+Where sources conflict, give both."
 
 Once both have reported, list every option they give, and write the decision's
 criteria: the quality attributes the framing states, and performance, wherever
