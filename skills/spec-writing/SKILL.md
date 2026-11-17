@@ -237,8 +237,11 @@ in the Areas table in the same edit.
 ```md
 # <Area>
 
-<Overview: what this area is about at its core, explained to someone new to it,
-with its most important use cases as examples.>
+<Overview: why the area exists, for someone new to it. Open with the problem it
+solves for its users, then what it lets them do about it. Then give an example:
+a user with that problem, the question they bring, and the answer the area
+gives them. Leave the terms the area gives its own meaning, such as
+"backorder", to its topics.>
 
 ## User Stories
 
