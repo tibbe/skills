@@ -26,15 +26,15 @@ sub-agents, so each search stays out of the others' context and yours.
    - **Products**: how other products of the kind the framing names, and others
      facing the same problem, handle this behavior.
 
-   Give each the framing and this brief: "Search the web for how this problem is
-   solved. Report every principled option the sources take, each with its
-   trade-offs, the evidence of its adoption, why its adopters chose it, and the
-   sources it comes from. Evidence of adoption: the platform providing or
-   documenting it; products like ours using it, with each product's users,
-   downloads or GitHub stars; and, for a library to adopt, its GitHub stars,
-   package downloads and recent releases. Report them condensed and complete:
-   one entry per option, leaving out no option, evidence or source, and nothing
-   else. Where sources conflict, give both."
+   Give each the framing and this brief, and nothing else: "Search the web for
+   how this problem is solved. Report every principled option the sources take,
+   each with its trade-offs, the evidence of its adoption, why its adopters
+   chose it, and the sources it comes from. Evidence of adoption: the platform
+   providing or documenting it; products like ours using it, with each
+   product's users, downloads or GitHub stars; and, for a library to adopt, its
+   GitHub stars, package downloads and recent releases. Report them condensed
+   and complete: one entry per option, leaving out no option, evidence or
+   source, and nothing else. Where sources conflict, give both."
 
 ### 2. Criteria
 
