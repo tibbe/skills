@@ -25,9 +25,11 @@ match it.
 │       ├── shipping.md
 │       ├── design_system.md     ← the UX that holds across areas
 │       ├── architecture.md      ← architecturally significant decisions
+│       ├── visuals/             ← sketches of screens, as images or HTML
 │       ├── macos/
 │       │   ├── design_system.md ← the UX on this platform
-│       │   └── architecture.md  ← architecture on this platform
+│       │   ├── architecture.md  ← architecture on this platform
+│       │   └── visuals/         ← mockups of screens on this platform
 │       └── web/
 │           └── design_system.md
 └── src/
@@ -310,6 +312,43 @@ so on, in whichever of these forms fits. A topic can use more than one form.
   | paid   | warehouse ships      | shipped   | the customer is emailed  |
   ```
 
+- Write the screens of an area as a table with a row per screen: where the
+  user reaches it from and what it is for. A view that blocks what is behind
+  it, such as a dialog, is a screen. A menu, or a part of a screen that
+  changes in place, is part of its screen. The table is complete when every
+  user story that the user carries out on a screen has a screen that delivers
+  it, and the user can reach every screen:
+
+  ```md
+  | Screen  | Reached from          | Purpose                  |
+  | ------- | --------------------- | ------------------------ |
+  | Inbox   | opening the app       | find and open mail       |
+  | Message | choosing one in Inbox | read a message and reply |
+  ```
+
+- Write a screen as a section with its name. Describe its layout in prose,
+  then what it holds, in order, with notes on its behaviour. Where the layout
+  names regions, describe what each holds under its name. Give its text
+  verbatim:
+
+  ```md
+  ### Inbox
+
+  - **Layout.** The toolbar runs along the top and the message list fills
+    the rest. When the window is wide enough for both, the open message shows
+    to the right of the list.
+  - **Toolbar.** "Compose", which opens New message, then a search field,
+    which filters the list as the user types.
+  - **Message list.** The messages, newest first, each with its sender,
+    subject, first line and the time it arrived.
+  ```
+
+  A screen can link to sketches of it, as images or HTML files in `visuals/`,
+  such as one of a state or a window size. Name each file for its screen,
+  state and window size, such as `inbox-empty-narrow.png`. A sketch shows the
+  structure; the design system gives the look. A sketch is an example of the
+  text, and the text wins on conflict.
+
 ### design_system.md
 
 The UX that holds across areas.
@@ -317,13 +356,18 @@ The UX that holds across areas.
 ```md
 # Design system
 
-## <Foundation, such as Color, Type, Layout or Navigation>
+## <Foundation, such as Color, Type, Layout, Navigation or Screen states>
 
 - <A decision that holds across areas, one per bullet.>
 ```
 
 Name what a foundation sets by role, not by value: an "Error" color, not
 `#e01b24`.
+
+Screen states decides once how every screen shows a state such as empty,
+loading, partial or error, with its text verbatim. For example: "An empty
+list shows 'Nothing here yet' and the action that adds the first item". A
+screen describes these states only where it shows them differently.
 
 ### architecture.md
 
@@ -355,7 +399,8 @@ such as macOS, Linux or the web.
 How the platform realises the shared design system: the platform's design
 system it follows, such as Material Design 3 or Apple's Human Interface
 Guidelines, the value for each color role, and the components that realise
-navigation.
+navigation. Mockups that show a screen with the platform's look go in the
+platform's `visuals/`, named as the sketches are; they are examples too.
 
 ```md
 # <Product> on <platform>: design system
