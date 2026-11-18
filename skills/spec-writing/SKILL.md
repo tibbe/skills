@@ -61,15 +61,15 @@ Frame the question from what the user and the spec have settled, and nothing
 else: the kind of product it is for, the behaviour to decide, its quality
 attributes, and the platform it runs on. Dispatch one sub-agent for the platform
 the framing names and one for products of the kind it names, together, in the
-foreground. Give each the framing and this brief: "Search the web for how this
-question is answered. Report every principled option the sources take, each
-with its trade-offs, the evidence of its adoption, why its adopters chose it,
-and the sources it comes from. Evidence of adoption: the platform providing or
-documenting it; products like ours using it, with each product's users,
-downloads or GitHub stars; and, for a library to adopt, its GitHub stars,
-package downloads and recent releases. Report them condensed and complete: one
-entry per option, leaving out no option, evidence or source, and nothing else.
-Where sources conflict, give both."
+foreground. Give each the framing and this brief, and nothing else: "Search the
+web for how this question is answered. Report every principled option the
+sources take, each with its trade-offs, the evidence of its adoption, why its
+adopters chose it, and the sources it comes from. Evidence of adoption: the
+platform providing or documenting it; products like ours using it, with each
+product's users, downloads or GitHub stars; and, for a library to adopt, its
+GitHub stars, package downloads and recent releases. Report them condensed and
+complete: one entry per option, leaving out no option, evidence or source, and
+nothing else. Where sources conflict, give both."
 
 Once both have reported, list every option they give, and write the decision's
 criteria: the quality attributes the framing states, and performance, wherever
