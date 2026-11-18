@@ -23,12 +23,14 @@ match it.
 │       ├── billing.md
 │       ├── payments.md
 │       ├── shipping.md
-│       ├── design_system.md     ← the UX that holds across areas
+│       ├── design_system.md     ← the conventions every screen follows
+│       ├── shell.md             ← the regions every screen shares
 │       ├── architecture.md      ← architecturally significant decisions
 │       ├── visuals/             ← sketches of screens, as images or HTML
 │       ├── macos/
-│       │   ├── design_system.md ← the UX on this platform
+│       │   ├── design_system.md ← the conventions on this platform
 │       │   ├── architecture.md  ← architecture on this platform
+│       │   ├── ordering.md      ← an area on this platform
 │       │   └── visuals/         ← mockups of screens on this platform
 │       └── web/
 │           └── design_system.md
@@ -338,8 +340,8 @@ so on, in whichever of these forms fits. A topic can use more than one form.
   ### Inbox
 
   - **Layout.** The toolbar runs along the top and the message list fills
-    the rest. When the window is wide enough for both, the open message shows
-    to the right of the list.
+    the rest. In the expanded size class, the open message is to the right of
+    the list.
   - **Toolbar.** "Compose", which opens New message, then a search field,
     which filters the list as the user types.
   - **Message list.** The messages, newest first, each with its sender,
@@ -347,30 +349,46 @@ so on, in whichever of these forms fits. A topic can use more than one form.
   ```
 
   A screen can link to sketches of it, as images or HTML files in `visuals/`,
-  such as one of a state or a window size. Name each file for its screen,
-  state and window size, such as `inbox-empty-narrow.png`. A sketch shows the
-  structure; the design system gives the look. A sketch is an example of the
-  text, and the text wins on conflict.
+  such as one of a state or a window size class. Name each file for its
+  screen, state and window size class, such as `inbox-empty-compact.png`. A
+  sketch shows the structure; the design system gives the look. A sketch is
+  an example of the text, and the text wins on conflict.
 
 ### design_system.md
 
-The UX that holds across areas.
+The conventions every screen follows.
 
 ```md
 # Design system
 
-## <Foundation, such as Color, Type, Layout, Navigation or Screen states>
+## <Foundation, such as Color, Type, Layout, Icons or Motion>
 
-- <A decision that holds across areas, one per bullet.>
+- <A convention that every screen follows, one per bullet.>
 ```
 
 Name what a foundation sets by role, not by value: an "Error" color, not
 `#e01b24`.
 
-Screen states decides once how every screen shows a state such as empty,
-loading, partial or error, with its text verbatim. For example: "An empty
-list shows 'Nothing here yet' and the action that adds the first item". A
-screen describes these states only where it shows them differently.
+The Layout foundation sets the rules that the layout of every screen follows,
+such as spacing and window size classes. A window size class is a range of
+window widths in which a layout stays the same, such as compact or expanded.
+Name each class by its role, and let each platform give its widths. A screen's
+layout says what changes from one window size class to the next.
+
+### shell.md
+
+The regions that every screen shares, such as the navigation, the notices for
+the whole product or its search. Every screen fills the space that the regions
+leave. Write the shell in the form of a screen:
+
+```md
+# Shell
+
+- **Layout.** <Where each region is, and what changes in each window size
+  class.>
+- **<Region>.** <What the region holds, in order, with notes on its
+  behaviour.>
+```
 
 ### architecture.md
 
@@ -399,11 +417,11 @@ such as macOS, Linux or the web.
 
 #### <platform>/design_system.md
 
-How the platform realises the shared design system: the platform's design
-system it follows, such as Material Design 3 or Apple's Human Interface
-Guidelines, the value for each color role, and the components that realise
-navigation. Mockups that show a screen with the platform's look go in the
-platform's `visuals/`, named as the sketches are; they are examples too.
+How the platform realises the shared design system. It names the platform's
+design system that it follows, such as Material Design 3 or Apple's Human
+Interface Guidelines. It gives the values that the shared file leaves open,
+such as the color for each color role or the widths of each window size
+class.
 
 ```md
 # <Product> on <platform>: design system
@@ -413,6 +431,25 @@ platform's `visuals/`, named as the sketches are; they are examples too.
 ## <Foundation>
 
 - <How this platform realises the shared foundation.>
+```
+
+#### <platform>/<area>.md
+
+What an area does on this platform: the details that the area leaves open,
+and the parts where the platform has to differ. For example, the platform's
+component that draws a part of a screen, or the minimum width of a column.
+`<platform>/shell.md` does the same for the shell, with the title
+`# Shell on <platform>`.
+
+Mockups of a screen with the platform's look go in the platform's `visuals/`.
+Name them as you name the sketches. A mockup is an example, as a sketch is.
+
+```md
+# <Area> on <platform>
+
+## <Topic or screen of the area>
+
+- <What the area does on this platform, one per bullet.>
 ```
 
 #### <platform>/architecture.md
