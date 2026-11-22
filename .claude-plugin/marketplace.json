@@ -8,6 +8,14 @@
       "name": "tibbe-skills",
       "source": "./",
       "description": "Skills for spec-driven development: decide what the product does, write it down in a spec, and keep the spec consistent as it grows."
+    },
+    {
+      "name": "mattpocock-skills",
+      "source": {
+        "source": "github",
+        "repo": "mattpocock/skills"
+      },
+      "description": "Matt Pocock's agent skills, fetched from github.com/mattpocock/skills."
     }
   ]
 }
