@@ -1,0 +1,5 @@
+{
+  "name": "tibbe-skills",
+  "description": "Skills for spec-driven development: decide what the product does, write it down in a spec, and keep the spec consistent as it grows.",
+  "repository": "https://github.com/tibbe/skills"
+}
