@@ -29,6 +29,7 @@ match it.
 │       ├── visuals/             ← sketches of screens, as images or HTML
 │       ├── macos/
 │       │   ├── design_system.md ← the conventions on this platform
+│       │   ├── components.md    ← the product's own components
 │       │   ├── architecture.md  ← architecture on this platform
 │       │   ├── ordering.md      ← an area on this platform
 │       │   └── visuals/         ← mockups of screens on this platform
@@ -175,7 +176,14 @@ the pipeline end to end; like the rest of the overview, it decides nothing.
 The spec decides everything a user can observe: given the spec alone, a builder
 could write all of the product's code again, deriving each case from its
 decisions, without any change a user would notice. Beyond that, it holds only
-the architecturally significant decisions. These never go in the spec:
+the architecturally significant decisions.
+
+What a user can observe includes each text that the product shows, such as a
+label, a message or an error, and each icon. Write the text exactly, in quotes:
+"No orders", not "a message that says that the list is empty". Name the icon by
+its name in the icon set. The builder then chooses neither.
+
+These never go in the spec:
 
 - How the code does what the spec says: modules, functions, source file paths,
   data structures.
@@ -333,8 +341,7 @@ so on, in whichever of these forms fits. A topic can use more than one form.
 
 - Write a screen as a section with its name. Describe its layout in prose,
   then what it holds, in order, with notes on its behaviour. Where the layout
-  names regions, describe what each holds under its name. Give its text
-  verbatim:
+  names regions, describe what each holds under its name:
 
   ```md
   ### Inbox
@@ -356,7 +363,9 @@ so on, in whichever of these forms fits. A topic can use more than one form.
 
 ### design_system.md
 
-The conventions every screen follows.
+The conventions every screen follows. A decision about one part of one screen
+is not a convention: the icon set and the style of its icons go here, but the
+icon of a part goes where the spec describes that part.
 
 ```md
 # Design system
@@ -415,6 +424,21 @@ rules, a sequence with its exceptions, or a table.>
 A platform is one environment the product runs on with its own conventions,
 such as macOS, Linux or the web.
 
+A platform file says how a part looks in the first of these ways that fits:
+
+1. Where a component of the platform's design system settles how the part
+   looks, name the component and write nothing more: "The unread count is a
+   Material 3 badge."
+2. Where a component settles most of it, name the component and write only
+   what differs: "A message is a Material 3 filled card in
+   `surface-container-low`."
+3. Where the design system has no component for the part, define one in
+   `<platform>/components.md` and refer to it by its name.
+
+Write a value, such as a color or a spacing, as a token of the platform's
+design system, not as the value itself: `surface-container-low`, not
+`#f7f2fa`.
+
 #### <platform>/design_system.md
 
 How the platform realises the shared design system. It names the platform's
@@ -433,13 +457,30 @@ class.
 - <How this platform realises the shared foundation.>
 ```
 
+#### <platform>/components.md
+
+The product's own components on this platform: the parts that the platform's
+design system has no component for, such as a timeline. Each is a section
+with the component's name, and the other files refer to it by that name.
+Define how the component looks from other components, where they fit its
+parts, and from the design system's tokens. The definition is complete when
+two builders would draw the component the same.
+
+```md
+# Components on <platform>
+
+## <Component>
+
+- **<Part of the component>.** <How it looks.>
+```
+
 #### <platform>/<area>.md
 
 What an area does on this platform: the details that the area leaves open,
 and the parts where the platform has to differ. For example, the platform's
-component that draws a part of a screen, or the minimum width of a column.
-`<platform>/shell.md` does the same for the shell, with the title
-`# Shell on <platform>`.
+component that draws a part of a screen, the icon of a part, or the minimum
+width of a column. `<platform>/shell.md` does the same for the shell, with the
+title `# Shell on <platform>`.
 
 Mockups of a screen with the platform's look go in the platform's `visuals/`.
 Name them as you name the sketches. A mockup is an example, as a sketch is.
