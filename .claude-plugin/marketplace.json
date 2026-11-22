@@ -1,0 +1,13 @@
+{
+  "name": "tibbe",
+  "owner": {
+    "name": "Johan Tibell"
+  },
+  "plugins": [
+    {
+      "name": "tibbe-skills",
+      "source": "./",
+      "description": "Skills for spec-driven development: decide what the product does, write it down in a spec, and keep the spec consistent as it grows."
+    }
+  ]
+}

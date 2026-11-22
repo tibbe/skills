@@ -6,6 +6,16 @@
 npx skills add tibbe/skills
 ```
 
+In Claude Code:
+
+```text
+/plugin marketplace add tibbe/skills
+/plugin install tibbe-skills@tibbe
+```
+
+In claude.ai, add `tibbe/skills` under Customize > Plugins > Add > Add
+marketplace.
+
 ## Skills
 
 - [**prior-art**](skills/prior-art/SKILL.md): Find how the problem has been
