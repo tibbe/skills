@@ -16,6 +16,10 @@ In Claude Code:
 In claude.ai, add `tibbe/skills` under Customize > Plugins > Add > Add
 marketplace.
 
+The marketplace also lists Matt Pocock's plugin, `mattpocock-skills`, which
+is fetched from his repo, [mattpocock/skills](https://github.com/mattpocock/skills).
+In Claude Code, install it with `/plugin install mattpocock-skills@tibbe`.
+
 ## Skills
 
 - [**prior-art**](skills/prior-art/SKILL.md): Find how the problem has been
