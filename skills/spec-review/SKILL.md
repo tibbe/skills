@@ -53,7 +53,8 @@ dangling test against each clause the diff removed or moved:
 - **Restates** (hard): two clauses decide the same thing. → Remove either; the
   other still decides it. Name the widest level the decision holds at. A
   decision belongs once, at the widest level it holds: a principle in
-  `product.md`, else a shared area, else a platform file.
+  `product.md`, else a UI pattern, else an area; with more than one UI, a
+  shared file before a UI's folder.
   A reference that names a decision and links to where it is made, as "as
   under [Repository](repository.md)", is not a match.
 - **Dangles** (hard): a clause elsewhere refers, by name or by link, to a
