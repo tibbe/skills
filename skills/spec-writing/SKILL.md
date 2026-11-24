@@ -2,7 +2,8 @@
 name: spec-writing
 description:
   Write or edit a product spec. Use when deciding or changing what the product
-  does or an architecturally significant decision.
+  does or how it looks, or an architecturally significant decision, even if
+  the user only asks to build or change a feature and doesn't mention the spec.
 ---
 
 # Spec Writing
