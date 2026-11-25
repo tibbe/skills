@@ -154,10 +154,13 @@ Where a decision goes depends on what it decides:
 - **What the product does** is decided once, so no other file repeats it. A
   choice that defines the product in broad strokes is a principle in
   `product.md` ([product.md](#productmd)). Every other decision goes in the
-  area whose concern it is, and a concern that several areas share, such as
-  how amounts are shown, is an area of its own, such as Currency.
-- **How a part of the UI looks and works** is decided where the part is: on
+  area whose concern it is. A concern that several areas share is an area of
+  its own, such as Currency, for how amounts are shown.
+- **How one part of the UI looks and works** is decided where the part is: on
   its screen, or in its component ([components.md](#componentsmd)).
+- **A rule over many parts of the UI**, such as that each text is in the
+  active voice, goes in `design_system.md`, and only when the user asks for it
+  ([design_system.md](#design_systemmd)).
 
 With more than one UI, a decision that holds on every UI goes in the shared
 files, and a UI's folder holds only what is specific to that UI. When a UI has
@@ -534,7 +537,30 @@ link to its spec, and gives only what that spec doesn't decide:
 - the choices that it leaves to the product, such as the product's colors or
   its icon set;
 - what only its examples show, such as the size of an icon in each component,
-  as a table with a row per component.
+  as a table with a row per component;
+- the product's own rules over many parts.
+
+A rule of the product's own covers a kind of part or text, wherever it is. It
+says what each such part does as exactly as the part's own description would,
+such as by naming the component that it uses. Write one only when the user
+asks for it. For example:
+
+- "Titles, headings, labels and buttons are in sentence case."
+- "A title, a tooltip or a button's label ends with no period."
+- "An action that removes something does so at once, then shows a Material 3
+  snackbar whose action is 'Undo'."
+
+These are not rules of the product's own:
+
+- An aim that no builder could check, such as "messages are short and
+  friendly".
+- A rule with an exception, such as "buttons are filled, but outlined on the
+  Settings screen". A rule names no screen and no area. Where a part has to
+  differ from a rule, ask the user whether to change the rule.
+- A decision about one part, such as the text of an empty inbox. It goes where
+  the part is.
+- What the product does, such as how long a deleted message is kept. It goes
+  in its area.
 
 The rest of the UI goes in other files: the product's screens, and what they
 hold, say or do, in the areas, and the components that screens share in
@@ -549,6 +575,10 @@ hold, say or do, in the areas, and the components that screens share in
 
 - <A choice that the design system leaves to the product, and what the product
   chooses.>
+
+## <The kind of part or text that its rules cover, such as Capitalization>
+
+- <A rule of the product's own, which holds for every part of its kind.>
 ```
 
 A window size class is a range of window widths in which a layout stays the
@@ -557,11 +587,23 @@ window size class to the next.
 
 ### components.md
 
-The product's own components that more than one screen uses, the same on each.
-Each is a section with the component's name: how it looks, in a form of
-[How a part looks](#how-a-part-looks), then how it works, such as what closes a
-dialog. Each screen that uses it names it and gives what fills its slots. A
-component that only one screen uses is written on that screen.
+The product's own components that more than one screen uses. Parts on more
+than one screen that look alike are one of two things:
+
+- **One component,** when the user wants a change to one of them to change
+  them all. It is a section here with the component's name: how it looks, in
+  a form of [How a part looks](#how-a-part-looks), then how it works, such as
+  what closes a dialog.
+- **Parts that only look alike.** Each is written where it is, with its own
+  values, even where they are the same as another's. Each can then change
+  alone.
+
+A component looks and works the same wherever it is used, so its definition
+names nothing that uses it: no screen, no component that holds it, and no case
+that only some of its uses have. Each use names it and fills each of its
+slots. Where uses need a component to differ, each version is a component of
+its own, with a name of its own. A component that only one screen uses is
+written on that screen.
 
 ```md
 # Components
