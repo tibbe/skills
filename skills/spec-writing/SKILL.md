@@ -24,9 +24,8 @@ match it.
 │       ├── billing.md
 │       ├── payments.md
 │       ├── shell.md          ← the regions every screen shares
-│       ├── ui_patterns.md    ← what every screen does the same way
 │       ├── design_system.md  ← the design system the UI is drawn in
-│       ├── components.md     ← the product's own components
+│       ├── components.md     ← the product's components that screens share
 │       ├── architecture.md   ← architecturally significant decisions
 │       └── visuals/          ← sketches of screens, as images or HTML
 └── src/
@@ -44,7 +43,6 @@ docs/specs/
 ├── web/
 │   ├── ordering.md           ← the area's screens on the web
 │   ├── shell.md
-│   ├── ui_patterns.md
 │   ├── design_system.md
 │   ├── components.md
 │   └── visuals/
@@ -133,14 +131,15 @@ abstract, and ask whether it's right.
 
 ### State the rule, not its cases
 
-When a decision lists cases, or you're about to add a case to one, propose the
-rule the cases follow and ask whether it's right: "a customer can cancel an
-order until it ships", not "a customer can cancel an order that is placed, paid
-or packed". The rule can be a convention the product follows: "amounts are
-written the way the customer's locale writes them". Make it the most general
-rule from which a builder can still derive every case. A rule is
-open–closed: it settles the next case without an edit, where a list grows with
-every one. Write cases only as exceptions to the rule or as examples of it.
+When a decision about what the product does lists cases, or you're about to add
+a case to one, propose the rule the cases follow and ask whether it's right: "a
+customer can cancel an order until it ships", not "a customer can cancel an
+order that is placed, paid or packed". The rule can be a convention the product
+follows: "amounts are written the way the customer's locale writes them". Make
+it the most general rule from which a builder can still derive every case. A
+rule is open–closed: it settles the next case without an edit, where a list
+grows with every one. Write cases only as exceptions to the rule or as examples
+of it.
 
 ### Challenge against existing decisions
 
@@ -148,15 +147,17 @@ When a new decision conflicts with one already in the spec, quote it with its
 area: "billing.md says a sent invoice can't be changed, but this lets customers
 correct the address on one. Which is right?" Don't let both stand.
 
-### Decide once, on the widest level it holds
+### Put each decision where it belongs
 
-A decision that holds across every area is a principle in `product.md`, such as
-"every amount is shown in the customer's currency". One principle settles many
-decisions, so the areas don't repeat it.
+Where a decision goes depends on what it decides:
 
-A decision about how every screen behaves is a UI pattern in
-`ui_patterns.md`, such as how a list with nothing in it reads. A decision about
-the screens of one area goes in that area, even when it is about the UI.
+- **What the product does** is decided once, so no other file repeats it. A
+  choice that defines the product in broad strokes is a principle in
+  `product.md` ([product.md](#productmd)). Every other decision goes in the
+  area whose concern it is, and a concern that several areas share, such as
+  how amounts are shown, is an area of its own, such as Currency.
+- **How a part of the UI looks and works** is decided where the part is: on
+  its screen, or in its component ([components.md](#componentsmd)).
 
 With more than one UI, a decision that holds on every UI goes in the shared
 files, and a UI's folder holds only what is specific to that UI. When a UI has
@@ -183,10 +184,10 @@ Write by the writing rules of ASD-STE100 Simplified Technical English.
 `product.md`, each area and `architecture.md` open with an overview for someone
 who wants to understand what it is about, then the details for someone who
 builds from it.
-The overview explains; it doesn't list. It states no requirement the details
-don't, except for the principles in `product.md`: each is stated there once and
-holds in every area. An overview may hold a diagram of the main path, such as
-the pipeline end to end; like the rest of the overview, it decides nothing.
+The overview explains; it doesn't list, and it decides nothing that the details
+don't. It may hold a diagram of the main path, such as the pipeline end to end.
+In `product.md`, the details start with the principles under Solution
+([product.md](#productmd)).
 
 ### What goes in the spec
 
@@ -231,7 +232,8 @@ These never go in the spec:
 
 <One sentence: the shape of the solution.>
 
-- **<A principle that holds across every area>.** <One or two sentences.>
+- **<A principle: a choice that defines the product in broad strokes>.** <One
+  or two sentences.>
 
 ## <Area>
 
@@ -243,6 +245,13 @@ Order areas the way a reader meets them.>
 - <Something a reader would expect the product to do, but it deliberately
   doesn't.>
 ```
+
+A principle is a choice that defines the product in broad strokes: without it,
+the product would be a different one. Every area holds to each principle, so no
+area repeats it. A rule that holds in many areas but doesn't define the
+product, such as how amounts are shown or the color of a button, goes where its
+concern is
+([Put each decision where it belongs](#put-each-decision-where-it-belongs)).
 
 `product.md` holds its areas as sections until it grows past about two pages.
 Then move every area into its own file in one edit, raising its headings one
@@ -306,9 +315,10 @@ so on, in the [forms](#forms).
 
 ### Forms
 
-Write the details of any file of the spec, such as a topic of an area, a
-UI pattern or an architectural decision, in whichever of these forms fits. A
-section can use more than one form.
+How a part of the UI looks takes the forms under
+[How a part looks](#how-a-part-looks). The other details of the spec, such as a
+topic of an area or an architectural decision, take whichever of these forms
+fits. A section can use more than one form.
 
 - Write rules as bullets, each holding one rule and opening with a bold label
   that names what it settles:
@@ -353,139 +363,6 @@ section can use more than one form.
   | paid   | warehouse ships      | shipped   | the customer is emailed  |
   ```
 
-### Screens
-
-Write an area's screens as a table, then a section for each screen:
-
-```md
-## Screens
-
-| Screen  | Reached from          | Purpose                  |
-| ------- | --------------------- | ------------------------ |
-| Inbox   | opening the app       | find and open mail       |
-| Message | choosing one in Inbox | read a message and reply |
-
-### Inbox
-
-- **Layout.** The toolbar runs along the top and the message list fills the
-  rest. In the expanded size class, the open message is to the right of the
-  list.
-- **Toolbar.** "Compose", which opens New message, then a search field, which
-  filters the list as the user types.
-- **Message list.** The messages, newest first, each with its sender, subject,
-  first line and the time it arrived.
-```
-
-The table has a row per screen: where the user reaches it from and what it is
-for. A view that blocks what is behind it, such as a dialog, is a screen. A
-menu, or a part of a screen that changes in place, is part of its screen. The
-table is complete when every user story that the user carries out on a screen
-has a screen that delivers it, and the user can reach every screen.
-
-Each screen is then a section with its name. Describe its layout in prose, then
-what it holds, in order, with notes on its behaviour. Where the layout names
-regions, describe what each holds under its name.
-
-A screen can link to sketches of it, as images or HTML files in `visuals/`,
-such as one of a state or a window size class. Name each file for its screen,
-state and window size class, such as `inbox-empty-compact.png`. A sketch is an
-example of the text, and the text wins on conflict.
-
-### shell.md
-
-The regions that every screen shares, such as the navigation, the notices for
-the whole product or its search. Every screen fills the space that the regions
-leave. Write the shell in the form of a screen:
-
-```md
-# Shell
-
-- **Layout.** <Where each region is, and what changes in each window size
-  class.>
-- **<Region>.** <What the region holds, in order, with notes on its
-  behaviour.>
-```
-
-### ui_patterns.md
-
-The product's UI patterns: what every screen does the same way, such as how a
-list with nothing in it reads, how an action that removes something asks first,
-how a long table is paged or how a time is shown. A pattern holds on every
-screen where its case comes up, so the areas don't repeat it.
-
-```md
-# UI patterns
-
-## <What recurs, such as Empty lists, Confirming, Tables or Time>
-
-- **<What it settles>.** <The pattern.>
-```
-
-### design_system.md
-
-The design system that the UI is drawn in. A design system sets the look of a
-UI for any product drawn in it, such as Material Design 3 or Apple's Human
-Interface Guidelines. It has foundations: named visual values, such as color,
-type, shape, elevation, spacing, motion and icons, held as tokens. It has
-components built from them, such as a button or a card, which hold no
-product's content. Some design systems also give patterns and writing
-guidance. The product follows those by following the design system, and its
-own go in `ui_patterns.md`.
-
-`design_system.md` names the design system that the product follows. It gives
-the values that the product sets for its tokens, such as the color of each
-color role, and the choices that the design system leaves open, such as the
-icon set. The product's screens, and what they hold, say or do, are not part
-of the design system: they go in the areas, or in `ui_patterns.md` when every
-screen does the same.
-
-```md
-# Design system
-
-<One sentence: the design system the UI follows.>
-
-## <Foundation, such as Color, Type, Shape, Layout or Icons>
-
-- <A value the product sets for a token of the foundation, or a choice the
-  design system leaves open.>
-```
-
-The Layout foundation gives the window size classes. A window size class is a
-range of window widths in which a layout stays the same, such as compact or
-expanded. A screen's layout says what changes from one window size class to
-the next.
-
-### components.md
-
-The product's own components: the parts that the design system has no
-component for, such as a timeline. Each is a section with the component's
-name, and the other files refer to it by that name. The definition is
-complete when two builders would draw the component the same.
-
-```md
-# Components
-
-## <Component>
-
-- **<Part of the component>.** <How it looks.>
-```
-
-### How a part looks
-
-Wherever the spec says how a part of the UI looks, on a screen, in the shell or
-in a component, say it in the first of these ways that fits:
-
-1. Where a component of the design system settles how the part looks, name the
-   component and write nothing more: "The unread count is a Material 3 badge."
-2. Where a component settles most of it, name the component and write only
-   what differs: "A message is a Material 3 filled card in
-   `surface-container-low`."
-3. Where the design system has no component for the part, define one in
-   `components.md` and refer to it by its name.
-
-Write a value, such as a color or a spacing, as a token of the design system,
-not as the value itself: `surface-container-low`, not `#f7f2fa`.
-
 ### architecture.md
 
 How the product is built: the decisions costly to change later that no user
@@ -519,3 +396,179 @@ such as `# Shell on iOS`.
 An area's shared file holds its user stories and topics, and what its screens
 show on every UI, such as their texts. `<platform>/<area>.md` holds the area's
 screens on that UI, and what the UI does differently in the area's topics.
+
+## The UI
+
+The spec decides how each part of the UI looks as fully as the UI's code would.
+Of the values that the code would set, the design system's components set
+some, and the spec states all the others.
+
+Write each part as a component: a component of the design system, one of those
+with a change, or one of the product's own, built from the design system's
+components and tokens. A component can have slots: parts that it leaves for the
+product to fill, such as the headline of a list item. A screen is a component
+too. Its layout holds its parts, and each part is a component, down to each
+text and icon. So write a screen, and each part of it, as a tree: each
+component, and what fills each of its slots.
+
+### How a part looks
+
+Wherever the spec says how a part of the UI looks, on a screen, in the shell or
+in a component, say it in the first of these forms that fits:
+
+1. **A component of the design system as it is.** Name the component, then give
+   what fills each slot that the part uses. The design system decides the rest,
+   such as the size, type and color of each slot and the space between them:
+
+   ```md
+   - **Member list item.** A Material 3 two-line list item:
+     - Leading avatar: the member's profile photo.
+     - Headline: the member's full name.
+     - Supporting text: their role in the project.
+   ```
+
+2. **A component of the design system with a change.** Name the component, say
+   only what differs from it, then give what fills its slots:
+
+   ```md
+   - **Member list item.** A Material 3 three-line list item, but with its
+     headline on up to two lines and its supporting text on one:
+     - Leading avatar: the member's profile photo.
+     - Headline: the member's full name.
+     - Supporting text: their role in the project.
+   ```
+
+3. **A component of the product's own.** Build it from the design system's
+   components and tokens. Say how its parts are laid out, then give each part
+   in these same forms:
+
+   ```md
+   - **Member card.** A Material 3 elevated card that holds two rows, 8dp
+     apart:
+     - First row: one run of text, on one line, cut with "…" where it doesn't
+       fit: the member's full name, in `title-medium` and `on-surface`, then
+       their username, in `body-medium` and `on-surface-variant`.
+     - Second row: two columns, each half of the width, 16dp apart. Each holds
+       text in `body-medium` and `on-surface-variant`, which wraps:
+       - Left column: their role in the project.
+       - Right column: their team.
+   ```
+
+Write a value as the design system's token for it: `surface-container-low`,
+not `#f7f2fa`. Where the design system has no token for it, write a value on
+the design system's grid, such as 8dp on a 4dp grid.
+
+### Screens
+
+Write an area's screens as a table, then a section for each screen:
+
+```md
+## Screens
+
+| Screen  | Reached from          | Purpose                  |
+| ------- | --------------------- | ------------------------ |
+| Inbox   | opening the app       | find and open mail       |
+| Message | choosing one in Inbox | read a message and reply |
+
+### Inbox
+
+- **Layout.** A Material 3 list-detail layout. The list pane holds the message
+  list. In the expanded window size class, the detail pane holds the Message
+  screen of the open message.
+- **Message list.** A Material 3 list, with a three-line list item for each
+  message, newest first:
+  - Headline: the sender's name.
+  - Supporting text: the subject on the first line, and the message's first
+    line on the second.
+  - Trailing supporting text: the time it arrived.
+- **Compose.** A Material 3 extended FAB at the bottom right of the list pane,
+  which opens New message:
+  - Icon: `edit`.
+  - Text label: "Compose".
+```
+
+The table has a row per screen: where the user reaches it from and what it is
+for. A view that blocks what is behind it, such as a dialog, is a screen. A
+menu, or a part of a screen that changes in place, is part of its screen. The
+table is complete when every user story that the user carries out on a screen
+has a screen that delivers it, and the user can reach every screen.
+
+Each screen is then a section with its name. Give its layout, then each part it
+holds, in order, with notes on its behaviour, each in a form of
+[How a part looks](#how-a-part-looks). Where the layout names regions, describe
+what each holds under its name.
+
+A screen can link to sketches of it, as images or HTML files in `visuals/`,
+such as one of a state or a window size class. Name each file for its screen,
+state and window size class, such as `inbox-empty-compact.png`. A sketch is an
+example of the text, and the text wins on conflict.
+
+### shell.md
+
+The regions that every screen shares, such as the navigation, the notices for
+the whole product or its search. Every screen fills the space that the regions
+leave. Write the shell in the form of a screen:
+
+```md
+# Shell
+
+- **Layout.** <Where each region is, and what changes in each window size
+  class.>
+- **<Region>.** <What the region holds, in order, with notes on its
+  behaviour.>
+```
+
+### design_system.md
+
+The design system that the UI is drawn in. A design system sets the look of a
+UI for any product drawn in it, such as Material Design 3 or Apple's Human
+Interface Guidelines. It has foundations: named visual values, such as color,
+type, shape, elevation, spacing, motion and icons, held as tokens. It has
+components built from them, such as a button or a card, which hold no
+product's content. Some design systems also give patterns and writing
+guidance, which the product follows by following the design system.
+
+`design_system.md` names the design system that the product follows, with a
+link to its spec, and gives only what that spec doesn't decide:
+
+- the choices that it leaves to the product, such as the product's colors or
+  its icon set;
+- what only its examples show, such as the size of an icon in each component,
+  as a table with a row per component.
+
+The rest of the UI goes in other files: the product's screens, and what they
+hold, say or do, in the areas, and the components that screens share in
+`components.md`.
+
+```md
+# Design system
+
+<One sentence: the design system the UI follows, with a link to its spec.>
+
+## <Foundation, such as Color, Type, Shape, Layout or Icons>
+
+- <A choice that the design system leaves to the product, and what the product
+  chooses.>
+```
+
+A window size class is a range of window widths in which a layout stays the
+same, such as compact or expanded. A screen's layout says what changes from one
+window size class to the next.
+
+### components.md
+
+The product's own components that more than one screen uses, the same on each.
+Each is a section with the component's name: how it looks, in a form of
+[How a part looks](#how-a-part-looks), then how it works, such as what closes a
+dialog. Each screen that uses it names it and gives what fills its slots. A
+component that only one screen uses is written on that screen.
+
+```md
+# Components
+
+## <Component>
+
+<How it looks, in a form of "How a part looks".>
+
+<How it works.>
+```
