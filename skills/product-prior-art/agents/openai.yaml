@@ -1,0 +1,6 @@
+interface:
+  display_name: "Product prior art"
+  short_description: "Find how others answered a product question, and choose"
+
+policy:
+  allow_implicit_invocation: true
