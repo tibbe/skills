@@ -457,6 +457,25 @@ in a component, say it in the first of these forms that fits:
        - Right column: their team.
    ```
 
+A slot can hold another component. Where what fills a slot differs from one use
+to the next, the component leaves the slot to its uses, and each use names the
+component that fills it, such as a fact row in `components.md` and a use of it
+on a screen:
+
+```md
+- **Fact row.** A row that holds the label at its start and the value at its
+  end, at least 24dp apart:
+  - Label: in `body-medium` and `on-surface-variant`.
+  - Value: what the use gives: a text, or a component.
+```
+
+```md
+- **Status.** A [fact row](components.md#fact-row):
+  - Label: "Status".
+  - Value: a Material 3 assist chip, with the status's icon as its leading
+    icon and the status's name as its label.
+```
+
 Write a value as the design system's token for it: `surface-container-low`,
 not `#f7f2fa`. Where the design system has no token for it, write a value on
 the design system's grid, such as 8dp on a 4dp grid.
