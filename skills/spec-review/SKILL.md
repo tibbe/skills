@@ -50,13 +50,19 @@ dangling test against each clause the diff removed or moved:
 
 - **Contradicts** (hard): the changed clause and a clause elsewhere cannot both
   hold. → Quote both; no reading satisfies the two.
-- **Restates** (hard): two clauses decide the same thing. → Remove either; the
-  other still decides it. Name the widest level the decision holds at. A
-  decision belongs once, at the widest level it holds: a principle in
-  `product.md`, else a UI pattern, else an area; with more than one UI, a
-  shared file before a UI's folder.
-  A reference that names a decision and links to where it is made, as "as
-  under [Repository](repository.md)", is not a match.
+- **Restates** (hard): two clauses decide the same thing, which is one of:
+  - **What the product does:** the same rule, stated twice. It belongs once:
+    in `product.md` when it is a principle, a choice that defines the product
+    in broad strokes, else in the area whose concern it is. With more than one
+    UI, it belongs in the shared file when it holds on every UI, else in the
+    folder of the UI it holds on.
+  - **How a part of the UI looks and works:** one part, described twice, such
+    as a card described on its screen and again in `components.md`. It belongs
+    where the part is: on its screen, or in its component.
+
+  A clause that links to where a decision is made, as "as under
+  [Repository](repository.md)", decides nothing of its own. → Remove either;
+  the other still decides it. Name where the decision belongs.
 - **Dangles** (hard): a clause elsewhere refers, by name or by link, to a
   term, heading or decision the diff removed or renamed. → Quote the reference
   and the removed text.
@@ -89,9 +95,9 @@ The Writing axis matches each test against each changed clause:
   - a detail no decision depends on;
   - what the product doesn't do, when no decision says it does.
 - **Structure** (hard): the changed text departs from spec-writing's
-  Document structure. → Cite the Document structure rule it departs from.
+  "Document structure" or "The UI". → Cite the rule it departs from.
 - **Plain English** (hard): a changed sentence breaks a rule of
-  spec-writing's Plain English. → Quote the sentence and name the rule.
+  spec-writing's "Plain English". → Quote the sentence and name the rule.
 
 ### 3. Spawn both sub-agents in parallel
 
@@ -113,14 +119,14 @@ reports they return.
 - The diff command and commit list.
 - The spec's paths, as above, **plus the Writing tests from step 2** pasted
   in full.
-- The brief: "Call the Skill tool for 'spec-writing' for its Plain English
-  and Document structure. Report, per file/clause where relevant, (a) every
-  place the diff departs from Plain English or Document structure: cite the
-  rule and quote the clause; and (b) any possibly implied clause you spot:
-  name the sign, quote the clause and the decision it follows from.
-  Distinguish hard violations from judgement calls: Plain English and
-  Document structure breaches are hard, but implied is always a judgement
-  call. Under 400 words."
+- The brief: "Call the Skill tool for 'spec-writing' for its 'Plain English',
+  'Document structure' and 'The UI'. Report, per file/clause where relevant,
+  (a) every place the diff departs from 'Plain English', 'Document structure'
+  or 'The UI': cite the rule and quote the clause; and (b) any possibly
+  implied clause you spot: name the sign, quote the clause and the decision it
+  follows from. Distinguish hard violations from judgement calls: breaches of
+  'Plain English', 'Document structure' and 'The UI' are hard, but implied is
+  always a judgement call. Under 400 words."
 
 ### 4. Remove the possibly implied clauses
 
