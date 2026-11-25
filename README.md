@@ -25,6 +25,9 @@ In Claude Code, install it with `/plugin install mattpocock-skills@tibbe`.
 - [**prior-art**](skills/prior-art/SKILL.md): Find how the problem has been
   solved before, and choose an option from it. Use before implementing a feature
   or fixing a bug, and before deciding what a product does.
+- [**product-prior-art**](skills/product-prior-art/SKILL.md): Find how others
+  have answered how a product behaves or how it is built, and recommend an
+  answer. Use while writing a spec.
 - [**spec-review**](skills/spec-review/SKILL.md): Review the changes to a
   product spec since a fixed point, or the uncommitted ones: does the changed
   text hold with the rest of the spec and follow the rules of spec-writing?
