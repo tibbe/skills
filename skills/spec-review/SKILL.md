@@ -57,8 +57,11 @@ dangling test against each clause the diff removed or moved:
     UI, it belongs in the shared file when it holds on every UI, else in the
     folder of the UI it holds on.
   - **How a part of the UI looks and works:** one part, described twice, such
-    as a card described on its screen and again in `components.md`. It belongs
-    where the part is: on its screen, or in its component.
+    as a component described in `components.md` and again on a screen that
+    uses it. It belongs where the part is: on its screen, or in its component.
+    Parts that look alike are one part only when the spec makes them one
+    component. Else each is its own decision, and the values they share
+    restate nothing.
 
   A clause that links to where a decision is made, as "as under
   [Repository](repository.md)", decides nothing of its own. → Remove either;
